@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milad To Umich</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            flex-direction: column;
+        }
+        #daysCount {
+            font-size: 80px;
+        }
+        #dateText {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function calculateDays() {
+            const issued = false;  // Set this to true to freeze the count
+
+            const startDate = new Date("2023-08-30");
+            let currentDate = new Date();
+
+            if (issued) {
+                currentDate = new Date("2024-09-09"); // You can set the date you want the count to freeze at
+            }
+
+            const timeDifference = currentDate - startDate;
+            const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById("daysCount").innerText = `${daysDifference} days`;
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+            document.getElementById("dateText").innerText = `September 12, 2023 - ${formattedDate}`;
+        }
+    </script>
+</head>
+<body onload="calculateDays()">
