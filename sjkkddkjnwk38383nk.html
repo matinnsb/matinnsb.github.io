@@ -30,10 +30,10 @@
             const issued = false;  // Set this to true to freeze the count
 
             const startDate = new Date("2023-08-30");
-            let currentDate = new Date("2024-09-09");
+            let currentDate = new Date(); // Use current date
 
             if (issued) {
-                currentDate = new Date(); // You can set the date you want the count to freeze at
+                currentDate = new Date("2024-09-09"); // Only set this if you want to freeze
             }
 
             const timeDifference = currentDate - startDate;
@@ -42,8 +42,12 @@
 
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = currentDate.toLocaleDateString('en-US', options);
-            document.getElementById("dateText").innerText = `September 12, 2023 - ${formattedDate}`;
+            document.getElementById("dateText").innerText = `August 30, 2023 - ${formattedDate}`;
         }
     </script>
 </head>
 <body onload="calculateDays()">
+    <div id="daysCount"></div>
+    <div id="dateText"></div>
+</body>
+</html>
