@@ -29,19 +29,25 @@
         function calculateDays() {
             const issued = false;  // Set this to true to freeze the count
 
-            const startDate = new Date("2024-08-30");
-            let currentDate = new Date(); // Use current date
+            const startDate = new Date("2024-08-30"); // The start date you're counting from
+            let currentDate = new Date("2024-09-11"); // Use the actual current date
 
             if (issued) {
-                currentDate = new Date("2024-09-09"); // Only set this if you want to freeze
+                currentDate = new Date("2024-09-09"); // Freeze the date if issued is true
             }
 
+            // Calculate the difference in days
             const timeDifference = currentDate - startDate;
             const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            
+            // Update the page content with the days difference
             document.getElementById("daysCount").innerText = `${daysDifference} days`;
 
+            // Format the current date in a readable format
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+            // Display the start date and the current (or frozen) date
             document.getElementById("dateText").innerText = `August 30, 2024 - ${formattedDate}`;
         }
     </script>
